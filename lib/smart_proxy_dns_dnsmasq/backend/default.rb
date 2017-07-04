@@ -35,12 +35,15 @@ module Proxy::Dns::Dnsmasq
     end
 
     def remove_entry(type, fqdn = nil, ip = nil)
-      return true unless case type
-      when 'A', 'AAAA'
-        e = configuration.find { |entry| entry.is_a?(AddressEntry) && entry.fqdn.include?(fqdn) }
-      when 'PTR'
-        e = configuration.find { |entry| entry.is_a?(PTREntry) && entry.fqdn == fqdn }
-      end
+      e = case type
+            when 'A', 'AAAA'
+              configuration.find { |entry| entry.is_a?(AddressEntry) && entry.fqdn.include?(fqdn) }
+            when 'PTR'
+              configuration.find { |entry| entry.is_a?(PTREntry) && entry.ip.include?(ip.split('.').reverse.join('.')) }
+            else
+              nil
+            end
+      return true unless e
 
       configuration.delete e
       @dirty = true
