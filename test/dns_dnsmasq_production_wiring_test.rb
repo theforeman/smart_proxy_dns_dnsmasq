@@ -9,7 +9,8 @@ class DnsDnsmasqProductionWiringTest < Test::Unit::TestCase
   end
 
   def test_dns_provider_initialization_default
-    @config.load_dependency_injection_wirings(@container, :dns_ttl => 999,
+    @config.load_dependency_injection_wirings(@container,
+                                              :dns_ttl => 999,
                                               :config_path => '/etc/dnsmasq.conf',
                                               :reload_cmd => 'systemctl reload dnsmasq')
 
@@ -23,7 +24,8 @@ class DnsDnsmasqProductionWiringTest < Test::Unit::TestCase
   end
 
   def test_dns_provider_initialization
-    @config.load_dependency_injection_wirings(@container, :dns_ttl => 999,
+    @config.load_dependency_injection_wirings(@container,
+                                              :dns_ttl => 999,
                                               :backend => 'openwrt',
                                               :config_path => '/etc/config/dhcp',
                                               :reload_cmd => '/etc/init.d/dnsmasq reload')

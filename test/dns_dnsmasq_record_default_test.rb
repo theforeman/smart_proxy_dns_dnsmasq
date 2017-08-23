@@ -18,8 +18,8 @@ class DnsDnsmasqRecordDefaultTest < Test::Unit::TestCase
 
     @configuration.expects(:<<).with { |val|
       val.is_a?(Proxy::Dns::Dnsmasq::Default::AddressEntry) &&
-      val.fqdn == [fqdn] &&
-      val.ip == ip
+        val.fqdn == [fqdn] &&
+        val.ip == ip
     }.returns(true)
     assert @provider.do_create(fqdn, ip, 'A')
   end
@@ -31,8 +31,8 @@ class DnsDnsmasqRecordDefaultTest < Test::Unit::TestCase
 
     @configuration.expects(:<<).with { |val|
       val.is_a?(Proxy::Dns::Dnsmasq::Default::AddressEntry) &&
-      val.fqdn == [fqdn] &&
-      val.ip == ip
+        val.fqdn == [fqdn] &&
+        val.ip == ip
     }.returns(true)
     assert @provider.do_create(fqdn, ip, 'AAAA')
   end
@@ -44,8 +44,8 @@ class DnsDnsmasqRecordDefaultTest < Test::Unit::TestCase
 
     @configuration.expects(:<<).with { |val|
       val.is_a?(Proxy::Dns::Dnsmasq::Default::PTREntry) &&
-      val.fqdn == fqdn &&
-      val.ip == ip
+        val.fqdn == fqdn &&
+        val.ip == ip
     }.returns(true)
     assert @provider.do_create(ip, fqdn, 'PTR')
   end
@@ -57,8 +57,8 @@ class DnsDnsmasqRecordDefaultTest < Test::Unit::TestCase
 
     @configuration.expects(:<<).with { |val|
       val.is_a?(Proxy::Dns::Dnsmasq::Default::PTREntry) &&
-      val.fqdn == fqdn &&
-      val.ip == ip
+        val.fqdn == fqdn &&
+        val.ip == ip
     }.returns(true)
     assert @provider.do_create(ip, fqdn, 'PTR')
   end
@@ -71,8 +71,8 @@ class DnsDnsmasqRecordDefaultTest < Test::Unit::TestCase
     @configuration.expects(:find).returns(nil)
     @configuration.expects(:<<).with { |val|
       val.is_a?(Proxy::Dns::Dnsmasq::Default::CNAMEEntry) &&
-      val.name == name &&
-      val.target == target
+        val.name == name &&
+        val.target == target
     }.returns(true)
     assert @provider.do_create(name, target, 'CNAME')
   end

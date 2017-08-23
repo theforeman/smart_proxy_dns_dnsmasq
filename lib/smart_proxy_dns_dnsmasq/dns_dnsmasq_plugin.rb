@@ -9,7 +9,7 @@ module Proxy::Dns::Dnsmasq
     # An exception will be raised if they are initialized with nil values.
     # Settings not listed under default_settings are considered optional and by default have nil value.
     default_settings :config_path => '/etc/dnsmasq.d/foreman.conf',
-                     :reload_cmd => 'systemctl restart dnsmasq'
+                     :reload_cmd  => 'systemctl restart dnsmasq'
 
     requires :dns, '>= 1.15'
 
